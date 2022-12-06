@@ -6,3 +6,5 @@ seeds:
       column_types:
         customer_id: int
         incremental_counter: int
+        favourite_colour: varchar(100)
+        row_timestamp: timestamp

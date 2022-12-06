@@ -25,13 +25,14 @@ with customers as (
 select
     coalesce(
         {% if is_incremental() %} dim.skey_customer_id {% else %} null {% endif %}
-        ,{{ dbt_utils.surrogate_key(['stg.customer_id']) }}
+        ,{{ dbt_utils.generate_surrogate_key(['stg.customer_id']) }}
     ) as skey_customer_id
     ,stg.*
     ,{% if is_incremental() %}
      case when dim.customer_id is null then 'insert' else 'upsert' end
      {% else %} 'insert'
-     {% endif %} as t_action
+     {% endif %} as dbt_action
+    ,now()::timestamp as dbt_timestamp
 from customers stg
 
 

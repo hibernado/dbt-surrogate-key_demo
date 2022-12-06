@@ -12,6 +12,8 @@ select
 from (
 
     select *
-        ,row_number() over (partition by customer_id order by incremental_counter desc) as rnk
+        ,row_number() over (
+            partition by customer_id, row_timestamp
+            order by incremental_counter asc) as rnk
     from customers
 ) b where rnk = 1

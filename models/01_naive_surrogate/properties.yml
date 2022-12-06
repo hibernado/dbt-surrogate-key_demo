@@ -21,3 +21,15 @@ models:
         tests:
           - unique
           - not_null
+
+  - name: dim_customers_scd
+    description: generate surrogate keys for a single source system
+    tests:
+      - dbt_expectations.expect_compound_columns_to_be_unique:
+          column_list: [ "customer_id", "row_timestamp" ]
+          quote_columns: true
+    columns:
+      - name: skey_customer_id
+        tests:
+          - unique
+          - not_null
