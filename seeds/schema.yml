@@ -1,0 +1,8 @@
+version: 2
+
+seeds:
+  - name: system_1_customers
+    config:
+      column_types:
+        customer_id: int
+        incremental_counter: int
