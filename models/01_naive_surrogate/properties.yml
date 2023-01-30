@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: wrk_system_1_customers
+  - name: int_dim_customers
     description: temporary table to prepare current data for loading into the dimension
     columns:
       - name: customer_id
@@ -29,7 +29,7 @@ models:
           column_list: [ "customer_id", "row_timestamp" ]
           quote_columns: true
     columns:
-      - name: skey_customer_id
+      - name: skey_customer_id_snapshot_id
         tests:
           - unique
           - not_null

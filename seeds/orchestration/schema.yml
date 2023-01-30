@@ -7,6 +7,5 @@ seeds:
       column_types:
         target_table_type: varchar(250)
         target_table_name: varchar(250)
-        source_table_name: varchar(250)
         watermark: varchar(250)
         run_time: timestamp

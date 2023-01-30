@@ -1,6 +1,7 @@
 {{ config(
-    materialized='view'
-    ) }}
+    materialized='view',
+    unique_id='customer_id'
+) }}
 
 with customers as (
     select *
@@ -13,7 +14,7 @@ from (
 
     select *
         ,row_number() over (
-            partition by customer_id, row_timestamp
-            order by incremental_counter asc) as rnk
+            partition by customer_id
+            order by row_timestamp desc) as rnk
     from customers
 ) b where rnk = 1

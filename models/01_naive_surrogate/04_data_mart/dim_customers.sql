@@ -4,11 +4,10 @@
     post_hook=[
         after_commit("""
         insert into {{ ref('watermarks')}}
-        (target_table_type,target_table_name,source_table_name, watermark, run_time)
+        (target_table_type,target_table_name, watermark, run_time)
         select
             'dimension'
             ,'{{ this.identifier }}'
-            ,'{{ ref('stg_system_1_customers').identifier }}'
             ,max(incremental_counter)
             ,now()::timestamp
         from {{ this }}
@@ -18,7 +17,7 @@
 
 with customers as (
     select *
-    from {{ ref('wrk_system_1_customers') }}
+    from {{ ref('int_dim_customers') }}
 )
 
 

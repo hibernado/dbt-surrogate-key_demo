@@ -1,0 +1,10 @@
+version: 2
+
+models:
+  - name: stg_curr_system_1_customers
+    description: temporary table to prepare current data for loading into the dimension
+    columns:
+      - name: customer_id
+        tests:
+          - unique
+          - not_null
