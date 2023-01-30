@@ -1,4 +1,4 @@
 target_table_type,target_table_name,watermark,run_time
 dimension,dim_customers,0,1970-01-01 00:00
-dimension,wrk_curr_system_1_customers,0,1970-01-01 00:00
-dimension,wrk_snap_system_1_customers,0,1970-01-01 00:00
+dimension,int_dim_customers,0,1970-01-01 00:00
+dimension,int_dim_customers_scd,0,1970-01-01 00:00
